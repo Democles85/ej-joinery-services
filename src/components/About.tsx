@@ -5,7 +5,7 @@ const About = () => {
         <div className="flex items-center">
           <div className="max-w-[32rem]">
             <img
-              src="/src/assets/PUNE9.jpg"
+              src="/images/PUNE9.jpg"
               alt="Working Van"
               className="w-full h-full object-cover rounded-md"
             />

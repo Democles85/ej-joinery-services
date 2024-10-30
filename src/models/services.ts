@@ -9,35 +9,35 @@ const services: {
     href: "/services/sash-windows",
     description:
       "Timeless elegance meets modern functionality with our bespoke sash windows!",
-    image: "/src/assets/products/sashwindow.webp",
+    image: "/images/products/sashwindow.webp",
   },
   {
     title: "Front Doors",
     href: "/services/front-doors",
     description:
       "Welcome in style with our stunning front doors, where elegance meets security seamlessly!",
-    image: "/src/assets/products/frontdoors.webp",
+    image: "/images/products/frontdoors.webp",
   },
   {
     title: "Casement Windows",
     href: "/services/casement-windows",
     description:
       "Let fresh air and natural light flood your space with our sleek and energy-efficient casement windows!",
-    image: "/src/assets/products/casmentwindow.webp",
+    image: "/images/products/casmentwindow.webp",
   },
   {
     title: "French Doors",
     href: "/services/french-doors",
     description:
       "Step into seamless indoor-outdoor living with our stylish and durable patio doors!",
-    image: "/src/assets/products/patiodoor.webp",
+    image: "/images/products/patiodoor.webp",
   },
   {
     title: "Skylights",
     href: "/services/skylights",
     description:
       "Elevate your space with panoramic views through our contemporary skylights, enhancing your home's allure!",
-    image: "/src/assets/products/skylight.jpg",
+    image: "/images/products/skylight.jpg",
   },
 ];
 

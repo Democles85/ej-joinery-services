@@ -3,27 +3,27 @@ import styles from "../styles/skills.module.css";
 const qualities = [
   {
     title: "Quality Materials",
-    image: "/src/assets/qualitymaterial.jpg",
+    image: "/images/qualitymaterial.jpg",
   },
   {
     title: "Skilled Artisians",
-    image: "/src/assets/skilledartizanals.jpg",
+    image: "/images/skilledartizanals.jpg",
   },
   {
     title: "Variety of Styles",
-    image: "/src/assets/Variety of Styles.jpg",
+    image: "/images/Variety of Styles.jpg",
   },
   {
     title: "Eco-Friendly",
-    image: "/src/assets/ecofriendly.jpg",
+    image: "/images/ecofriendly.jpg",
   },
   {
     title: "Energy Efficient",
-    image: "/src/assets/Energy Efficiency.jpg",
+    image: "/images/Energy Efficiency.jpg",
   },
   {
     title: "Tailored Solutions",
-    image: "/src/assets/Tailored Solutions.jpg",
+    image: "/images/Tailored Solutions.jpg",
   },
 ];
 

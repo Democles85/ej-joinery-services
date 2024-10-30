@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 
 const ExploreMore = () => {
   return (
-    <div className="flex items-center justify-center flex-col w-full bg-[url('/src/assets/thinking.jpg')] bg-repeat bg-center bg-contain h-[40vh] text-black">
+    <div className="flex items-center justify-center flex-col w-full bg-[url('/images/thinking.jpg')] bg-repeat bg-center bg-contain h-[40vh] text-black">
       <h1 className="text-sm font-semibold md:text-md">
         Ensuring 100% Quality Products
       </h1>
@@ -23,7 +23,7 @@ const ExploreMore = () => {
           <div className="flex flex-col place-items-center m-1 md:m-4">
             <h1 className="text-lg font-semibold my-2"> Explore More </h1>
             <iframe
-              src="/src/assets/Day_1_prezantim.pdf"
+              src="/images/Day_1_prezantim.pdf"
               className="w-full h-[70vh] rounded-md"
             />
           </div>

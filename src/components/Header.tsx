@@ -20,7 +20,7 @@ const Header = () => {
       <div className="flex place-items-center w-full">
         <div className="flex place-items-center px-2 w-fit">
           <img
-            src="/src/assets/logo-without-text.png"
+            src="/images/logo-without-text.png"
             alt="Logo"
             className="h-10 w-10 drop-shadow-[0_0_0.5em_#14512c] dark:drop-shadow-[0_0_0.5em_#5caf7d]"
           />

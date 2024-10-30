@@ -15,7 +15,7 @@ const Hero = () => {
       </div>
       <div></div>
       <img
-        src="/src/assets/background-removebg.png"
+        src="/images/background-removebg.png"
         alt="Hero"
         className="h-96 object-cover rounded-lg md:h-[36rem]"
       />
