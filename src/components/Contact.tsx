@@ -162,8 +162,8 @@ const Contact = () => {
             <div className="flex flex-col w-full place-items-center justify-center p-4">
               <div className="flex flex-col space-y-3">
                 <p className="flex place-items-center text-sm md:text-md">
-                  <MapPin className="size-5 mr-2" /> 1234 Elm Street, Toronto,
-                  ON, Canada
+                  <MapPin className="size-5 mr-2" /> 2A Goldsmith Road, London,
+                  United Kingdom
                 </p>
                 <a
                   className="flex place-items-center text-sm md:text-md"
