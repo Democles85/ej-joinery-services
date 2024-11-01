@@ -12,10 +12,19 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { useScreenWidth } from "@/hooks/get-screen-width";
+import { Separator } from "@/components/ui/separator";
 
 const ProductPage = () => {
   const { id } = useParams<{ id: string }>();
   const product = data.find((product) => product.id === id);
+  const screenWidth = useScreenWidth();
   const breakpointColumns = {
     default: 4,
     768: 2,
@@ -32,18 +41,15 @@ const ProductPage = () => {
 
   return (
     <main className="flex flex-col min-h-screen place-items-center justify-center">
-      <div className="flex flex-col max-w-[70rem] place-items-center justify-center">
-        <div className="flex flex-col max-w-[60rem] p-8 place-items-center justify-center">
+      <div className="flex flex-col max-w-[70rem] w-full place-items-center justify-center">
+        <div className="flex flex-col max-w-[60rem] w-full p-4 place-items-center justify-center md:p-8">
           <h1 className="text-xl font-bold md:text-2xl my-6">
             {product.title}
           </h1>
-          <div className="flex gap-x-8 items-center">
+          <div className="flex flex-col gap-x-8 items-center md:flex-row">
             <iframe
-              className="rounded-md border border-primary"
+              className="rounded-md border border-primary w-full max-h-full h-[400px] md:w-[360px] md:h-[400px]"
               title="3d box & sash"
-              width="360px"
-              height="400px"
-              frameBorder="0"
               allowFullScreen
               allow="autoplay; fullscreen; xr-spatial-tracking"
               xr-spatial-tracking
@@ -53,15 +59,18 @@ const ProductPage = () => {
               src={product.object}
             />
 
-            <p>{product.description}</p>
+            <p className="text-justify mt-4 md:mt-0">{product.description}</p>
           </div>
         </div>
 
-        <div className="flex flex-col my-6 md:my-8 place-items-center">
+        <div className="flex flex-col my-6 md:my-8 place-items-center w-full p-2">
           <h1 className="text-xl font-bold md:text-2xl my-6">Varieties</h1>
 
-          <Tabs defaultValue={product.table.parts[0].id} className="w-full">
-            <ScrollArea className="max-w-[1200px] w-fit whitespace-nowrap rounded-md border">
+          <Tabs
+            defaultValue={product.table.parts[0].id}
+            className="w-full md:w-full"
+          >
+            <ScrollArea className="max-w-[1200px] w-full whitespace-nowrap rounded-md border">
               <div className="flex w-max p-2">
                 <TabsList>
                   {product.table.parts.map((part) => (
@@ -75,48 +84,88 @@ const ProductPage = () => {
               <ScrollBar orientation="horizontal" />
             </ScrollArea>
 
-            {product.table.parts.map((part) => (
-              <TabsContent key={part.id} value={part.id}>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead className="w-40">Photo</TableHead>
-                      <TableHead className="w-80">Description</TableHead>
-                      <TableHead className="w-96">Features</TableHead>
-                    </TableRow>
-                  </TableHeader>
-
-                  <TableBody>
-                    {part.content.map((item, index) => (
-                      <TableRow key={index}>
-                        <TableCell className="w-40">
-                          <img
-                            className="w-36 h-36 rounded-md object-cover"
-                            src={item.image}
-                            alt={item.description}
-                          />
-                        </TableCell>
-                        <TableCell className="w-80">
-                          {item.description}
-                        </TableCell>
-                        {index === 0 && (
-                          <TableCell
-                            rowSpan={part.content.length}
-                            className="w-96 cursor-default"
-                          >
+            {screenWidth < 768
+              ? product.table.parts.map((part) => (
+                  <Accordion
+                    type="single"
+                    key={part.id}
+                    collapsible
+                    className="w-full"
+                  >
+                    <AccordionItem value={part.id}>
+                      <AccordionTrigger>{part.name}</AccordionTrigger>
+                      {part.content.map((item, index) => (
+                        <AccordionContent key={index}>
+                          <div className="flex flex-col gap-4 w-full">
+                            <div className="flex w-full place-items-center justify-center">
+                              <img
+                                className="w-36 h-36 rounded-md bg-cover"
+                                src={item.image}
+                                alt={item.description}
+                              />
+                            </div>
+                            <h1 className="font-semibold text-lg">
+                              {item.description}
+                            </h1>
                             <ul className="list-disc pl-4 space-y-2">
                               {part.features.map((feature, featureIndex) => (
                                 <li key={featureIndex}>{feature}</li>
                               ))}
                             </ul>
-                          </TableCell>
-                        )}
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TabsContent>
-            ))}
+                          </div>
+                          {/* Add separator */}
+                          {index !== part.content.length - 1 && (
+                            <Separator className="w-full mt-4" />
+                          )}
+                        </AccordionContent>
+                      ))}
+                    </AccordionItem>
+                  </Accordion>
+                ))
+              : product.table.parts.map((part) => (
+                  <TabsContent key={part.id} value={part.id}>
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead className="w-40">Photo</TableHead>
+                          <TableHead className="w-80">Description</TableHead>
+                          <TableHead className="w-96">Features</TableHead>
+                        </TableRow>
+                      </TableHeader>
+
+                      <TableBody>
+                        {part.content.map((item, index) => (
+                          <TableRow key={index}>
+                            <TableCell className="w-40">
+                              <img
+                                className="w-36 h-36 rounded-md object-cover"
+                                src={item.image}
+                                alt={item.description}
+                              />
+                            </TableCell>
+                            <TableCell className="w-80">
+                              {item.description}
+                            </TableCell>
+                            {index === 0 && (
+                              <TableCell
+                                rowSpan={part.content.length}
+                                className="w-96 cursor-default"
+                              >
+                                <ul className="list-disc pl-4 space-y-2">
+                                  {part.features.map(
+                                    (feature, featureIndex) => (
+                                      <li key={featureIndex}>{feature}</li>
+                                    )
+                                  )}
+                                </ul>
+                              </TableCell>
+                            )}
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TabsContent>
+                ))}
           </Tabs>
         </div>
 
